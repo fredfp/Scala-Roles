@@ -17,7 +17,7 @@ private[roles] trait Collaboration {
   
   trait AbstractRole[Player <: AnyRef] extends HasCore[Player] {
     // upper bound for type of proxy
-    type Proxy = this.type with Player
+    type Proxy = AbstractRole[Player] with Player
 
     type AnyClass = Class[T] forSome { type T }
 
