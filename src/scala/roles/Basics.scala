@@ -10,16 +10,16 @@ import internal.HasCore
 
 object Basics {
 
-  implicit def anyRef2HasAs[P <: AnyRef](o: P) = new HasAs[P] { val core = o }
+  implicit def anyRef2HasAs[Player <: AnyRef](o: Player) = new HasAs[Player] { val core = o }
 
-  trait HasAs[P <: AnyRef] {
-    val core: P
+  trait HasAs[Player <: AnyRef] {
+    val core: Player
     
-    def as(role: TransientCollaboration#Role[P]): core.type with TransientCollaboration#Role[P] = 
-      (core -: role).asInstanceOf[core.type with role.type]
+    def as[RoleType <: TransientCollaboration#Role[Player]](role: RoleType): core.type with RoleType =
+      (core -: role).asInstanceOf[core.type with RoleType]
 
-    def as[R <: TransientCollaboration#AbstractRole[P]](rolemapper: TransientCollaboration#RoleMapper[P, R]): R with core.type =
-      (core -: rolemapper).asInstanceOf[R with core.type]
+    def as[RoleType <: TransientCollaboration#AbstractRole[Player]](rolemapper: TransientCollaboration#RoleMapper[Player, RoleType]): RoleType with core.type =
+      (core -: rolemapper).asInstanceOf[RoleType with core.type]
   }
 }
 

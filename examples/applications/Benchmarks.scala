@@ -57,8 +57,6 @@ object Benchmarks {
     
     // stop here for profiling
     //Console.readLine
-
-    0
   }
 
 }

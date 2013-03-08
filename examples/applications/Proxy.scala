@@ -23,7 +23,7 @@ object Proxy {
   }
   
 
-  def main(args: Array[String]) = {
+  def main(args: Array[String]): Unit = {
   
     val element = new Data{}
 

@@ -24,7 +24,7 @@ trait Composite[Core <: AnyRef] extends TransientCollaboration {
       if (newChild.parentR != null) throw new Exception("Before adding this child, remove it from old parent: " + newChild.parentR)
       
       newChild.parentR = role
-      children :+ child.roleOf(newChild.core)
+      children = children :+ child.roleOf(newChild.core)
     }
     
     def getChild(i: Int): Child#Proxy = 

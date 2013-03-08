@@ -27,7 +27,7 @@ trait XWidget extends Handler {
 }
 
 trait XButton extends XWidget {
-  def handle = ""
+  def handle = ()
   def canHandle = false
 }
 
